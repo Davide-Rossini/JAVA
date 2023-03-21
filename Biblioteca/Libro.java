@@ -1,4 +1,4 @@
-package biblioteca;
+package Biblioteca;
 import java.io.BufferedWriter;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -141,7 +141,7 @@ public class Libro implements Serializable{
         switch(scelta){
             default: 
                 System.out.println("confermare? reinserire la scelta");
-                scelta = Integer.parseInt(s.nextLine());
+                //scelta = Integer.parseInt(s.nextLine());
             case 1:
                 try{
                     System.out.println("Inserisci l'autore: ");
