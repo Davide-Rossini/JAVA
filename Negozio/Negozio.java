@@ -1,6 +1,7 @@
 package Negozio;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class Negozio {
     
@@ -29,7 +30,4 @@ public class Negozio {
             System.out.println(prodotti.get(i).getNome());
         }
     }
-
-
- 
 }

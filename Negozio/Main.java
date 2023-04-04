@@ -1,11 +1,26 @@
 package Negozio;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         Negozio n = new Negozio();
+        ArrayList<String> nomi = new ArrayList<>();
+        nomi.add("Anna");
+        nomi.add("Giovanni");
+        nomi.add("Anna");
+
+        Iterator<String> it = nomi.iterator();
+        while(it.hasNext()){
+        String name = it.next();
+        if(name.equalsIgnoreCase("Anna"))
+        it.remove();
+        }
+        System.out.println(nomi);
+        /*
         int scelta = 0;
         do {
             System.out.println("1. Aggiungi prodotto");
@@ -37,7 +52,9 @@ public class Main {
                     System.out.println("Scelta non valida");
             }
         } while (scelta != 0);
+        */
     }
+
 
 
 }
