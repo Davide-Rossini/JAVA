@@ -22,7 +22,6 @@ public class ToDoList {
         }
     }
 
-
     public void rimuoviAttivita(int indice) {
         lista.remove(indice);
     }
