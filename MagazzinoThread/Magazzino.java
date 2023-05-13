@@ -2,22 +2,30 @@ package MagazzinoThread;
 
 public class Magazzino {
     private static int prodotto;
+    private static int quantita = 5;
 
     public Magazzino() {
         prodotto = 100;
     }
 
-    public static int getProdotto() {return prodotto;}
-
-    public static int compra(int n) {
-        if(vuoto())
-            return -1;
-        else
-            prodotto -= n;
-
-        return 0;
+    public synchronized int preleva(int quantita) {
+        if (quantita > 0 && quantita <= 5) {
+            if (prodotto >= quantita) {
+                prodotto -= quantita;
+                return prodotto;
+            } else {
+                return -1;
+            }
+        } else {
+            return -2;
+        }
     }
-    public static boolean vuoto() {
-        return prodotto == 0;
+    @Override
+    public String toString() {
+        return "Magazzino{" + "prodotti=" + prodotto + '}';
+    }
+
+    public int getProdotto() {
+        return prodotto;
     }
 }
