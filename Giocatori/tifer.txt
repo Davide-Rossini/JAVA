@@ -1,0 +1,256 @@
+package StudioMedico;
+
+
+
+public class CartellaClinica /*implements Comparable<CartellaClinica>*/{
+    private String nomePaziente;
+    private String cognomePaziente;
+    private String dataNascita;
+    private String codiceFiscale;
+    private String numeroTelefono;
+    private String dataVisita;
+    private String diagnosi;
+
+    public CartellaClinica(String nomePaziente, String cognomePaziente, String dataNascita, String codiceFiscale, String numeroTelefono, String dataVisita, String diagnosi) {
+        this.nomePaziente = nomePaziente;
+        this.cognomePaziente = cognomePaziente;
+        this.dataNascita = dataNascita;
+        this.codiceFiscale = codiceFiscale;
+        this.numeroTelefono = numeroTelefono;
+        this.dataVisita = dataVisita;
+        this.diagnosi = diagnosi;
+    }
+
+    public String getNomePaziente() {
+        return nomePaziente;
+    }
+
+    public String getCognomePaziente() {
+        return cognomePaziente;
+    }
+
+    public String getDataNascita() {
+        return dataNascita;
+    }
+
+    public String getCodiceFiscale() {
+        return codiceFiscale;
+    }
+
+    public String getNumeroTelefono() {
+        return numeroTelefono;
+    }
+
+    public String getDataVisita() {
+        return dataVisita;
+    }
+
+    public String getDiagnosi() {
+        return diagnosi;
+    }
+
+    public void setNomePaziente(String nomePaziente) {
+        this.nomePaziente = nomePaziente;
+    }
+
+    public void setCognomePaziente(String cognomePaziente) {
+        this.cognomePaziente = cognomePaziente;
+    }
+
+    public void setDataNascita(String dataNascita) {
+        this.dataNascita = dataNascita;
+    }
+
+    public void setCodiceFiscale(String codiceFiscale) {
+        this.codiceFiscale = codiceFiscale;
+    }
+
+    public void setNumeroTelefono(String numeroTelefono) {
+        this.numeroTelefono = numeroTelefono;
+    }
+
+    public void setDataVisita(String dataVisita) {
+        this.dataVisita = dataVisita;
+    }
+
+    public void setDiagnosi(String diagnosi) {
+        this.diagnosi = diagnosi;
+    }
+
+    
+    public String toString() {
+        return "CartellaClinica{" + "nomePaziente=" + nomePaziente + ", cognomePaziente=" + cognomePaziente + ", dataNascita=" + dataNascita + ", codiceFiscale=" + codiceFiscale + ", numeroTelefono=" + numeroTelefono + ", dataVisita=" + dataVisita + ", diagnosi=" + diagnosi + '}';
+    }
+
+    //compare con Comparable
+    /* 
+    @Override
+    public int compareTo(CartellaClinica o) {
+        return this.getCognomePaziente().compareTo(o.getCognomePaziente());
+    }
+    */
+
+    
+}
+
+
+
+
+package StudioMedico;
+import java.util.Iterator;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+
+public class Clinica {
+    ArrayList<CartellaClinica> cartella = new ArrayList<CartellaClinica>();
+
+    public void add(CartellaClinica c){
+        cartella.add(c);
+    }
+
+    //for each
+    public CartellaClinica rimuovi(String cognome){
+        if(cartella.size()==0){
+            System.out.println("Cartella vuota!");
+        }
+        else for(CartellaClinica cart : cartella){
+            if(cart.getCognomePaziente().equals(cognome)){
+                cartella.remove(cart);
+                return cart;
+            }
+        }
+        return null;
+        
+    }
+
+    //iterator
+    /*public void rimuovi(String cognome){
+        Iterator<CartellaClinica> it = cartella.iterator();
+        while(it.hasNext()){
+            CartellaClinica c = it.next();
+            if(c.getCognome().equals(cognome)){
+                it.remove();
+                return c;
+            }
+        }
+        retrun null;
+    }  */
+
+    public void stampa(){
+        if(cartella.size()==0){
+            System.out.println("Cartella vuota!");
+        }
+        else for(CartellaClinica c : cartella){
+            System.out.println(c.toString());
+        }
+        
+    }
+
+    //ordina con comparable
+    /* 
+    public void Ordina(){
+        Collections.sort(cartella);
+    }
+    */
+
+    //ordina con comparator
+    public void Ordina(){
+        Collections.sort(cartella, new Comparator<CartellaClinica>(){
+            public int compare(CartellaClinica c1, CartellaClinica c2){
+                return c1.getCognomePaziente().compareTo(c2.getCognomePaziente());
+            }
+        });
+    
+    }
+    
+    public void cerca(String cognome){
+        if(cartella.size()==0){
+            System.out.println("Cartella vuota!");
+        }
+        else for(CartellaClinica c : cartella){
+            if(c.getCognomePaziente().equals(cognome)){
+                System.out.println(c.toString());
+            }
+            else System.out.println("Cartella non trovata!");
+        }
+    }
+
+    
+    
+
+
+    
+    
+}
+
+
+
+package StudioMedico;
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main (String [] args){
+        Clinica c = new Clinica();
+        Scanner s = new Scanner(System.in); 
+        int scelta;
+
+        do{
+            System.out.println(" 1) Aggiungi cartella 2) Rimuovi cartella 3) Stampa cartelle 4) Cerca cartella 5) Ordina cartelle 0) Esci");
+            System.out.println("Inserire la scelta: ");
+            scelta = s.nextInt();
+            switch(scelta){
+
+                case 1:
+                System.out.println("Inserire il nome: ");
+                String nome = s.next();
+                System.out.println("Inserire il cognome: ");
+                String cognome = s.next();
+                System.out.println("Inserire il codice fiscale: ");
+                String codiceFiscale = s.next();
+                System.out.println("Inserire il numero di telefono: ");
+                String numeroTelefono = s.next();
+                System.out.println("Inserire la data di nascita: ");
+                String dataNascita = s.next();
+                System.out.println("Inserire la data di visita: ");
+                String dataVisita = s.next();
+                System.out.println("Inserire la diagnosi: ");
+                String diagnosi = s.next();
+                CartellaClinica cc = new CartellaClinica(nome, cognome, dataNascita, codiceFiscale, numeroTelefono, dataVisita, diagnosi);
+                c.add(cc);
+                break;
+
+                case 2:
+                System.out.println("Inserire il cognome: ");
+                String cogn = s.next();
+                System.out.println(c.rimuovi(cogn));
+                break;
+
+                case 3:
+                c.stampa();
+                break;
+
+                case 4:
+                System.out.println("Inserire il cognome: ");
+                String cognom = s.next();
+                c.cerca(cognom);
+                break;
+
+                case 5:
+                c.Ordina();
+                break;
+
+                case 0:
+                System.out.println("...");
+                break;
+
+                default:
+                System.out.println("Scelta non valida!");
+
+
+         }
+        }while(scelta!=0);
+    }
+}
+
