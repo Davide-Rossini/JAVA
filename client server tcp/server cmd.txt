@@ -1,0 +1,26 @@
+server cmd
+
+C:\Users\74148982>cd Desktop
+
+C:\Users\74148982\Desktop>cd client tcp
+
+C:\Users\74148982\Desktop\client tcp>javac server.java
+
+C:\Users\74148982\Desktop\client tcp>java Server
+
+C:\Users\74148982\Desktop\client tcp>
+
+
+client cmd 
+
+C:\Users\74148982>cd desktop
+
+C:\Users\74148982\Desktop>cd client tcp
+
+C:\Users\74148982\Desktop\client tcp>javac client.java
+
+C:\Users\74148982\Desktop\client tcp>java Client
+
+C:\Users\74148982\Desktop\client tcp>
+
+
